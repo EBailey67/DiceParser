@@ -1,4 +1,4 @@
-#Dice Parser
+# Dice Parser
 by Eric D. Bailey
 
 Examples:
