@@ -1,5 +1,5 @@
 #include <cctype>
-#include <regex>
+#include <algorithm>
 
 #include "utility.h"
 
@@ -24,11 +24,18 @@ namespace DungeonZ
 			return false;
 		}
 
+		bool isSpace(unsigned char c) 
+		{
+			return (c == ' ' || c == '\n' || c == '\r' ||
+				c == '\t' || c == '\v' || c == '\f');
+		}
+
 		// Removes whitespace from the string and returns the new string.
 		// <param name="input">input character stream to be evaluated</param>
 		std::string RemoveWhitespace(std::string input)
 		{
-			auto output = std::regex_replace(input, std::regex("\\s+"), "");
+			std::string output = input;
+			output.erase(std::remove_if(output.begin(), output.end(), isSpace), output.end());
 			return output;
 		}
 	}
